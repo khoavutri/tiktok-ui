@@ -1,0 +1,50 @@
+.Discover {
+    margin-top: 60px;
+    width: 83.33vw;
+    height: calc(100vh - 60px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-color: red;
+    font-family: 'IBM Plex Sans', TikTokDisplayFont, Arial, Tahoma, PingFangSC, sans-serif;
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 3px;
+    }
+    &::-webkit-scrollbar-track {
+        background: white;
+    }
+    &:hover {
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.04);
+        }
+    }
+}
+.Discover_content {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(20%, 1fr));
+    gap: 15px;
+    width: 94%;
+    margin-top: 3vh;
+}
+.Discover_Content-img {
+    width: 100%;
+    height: 42vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    &:hover {
+        cursor: pointer;
+    }
+    border-radius: 10px;
+    background-size: cover;
+}

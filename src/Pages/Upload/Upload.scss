@@ -1,0 +1,85 @@
+.Upload {
+    margin-top: 60px;
+    height: calc(100vh - 60px);
+    width: 100vw;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+}
+.UploadForm {
+    height: 65vh;
+    width: 60vw;
+    background-color: white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px -2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.UploadFormP {
+    color: blue;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.UploadFormInput {
+    height: 7vh;
+    width: 40vw;
+    outline: none;
+    padding-left: 20px;
+    padding-right: 10px;
+    border: solid 0.5px #e3e3e4;
+    border-radius: 4px;
+}
+.UploadFormDiv {
+    position: relative;
+}
+.UploadFormDiv + .UploadFormDiv {
+    margin-top: 4vh;
+}
+.UploadFormInputP {
+    position: absolute;
+    top: 5vh;
+    right: 0.8vw;
+}
+.UploadFormFlex {
+    display: flex;
+    margin-top: 5vh;
+}
+.UploadFormFlexButton {
+    height: 50px;
+    width: 150px;
+    font-weight: bold;
+}
+.UploadFormFlexButton + .UploadFormFlexButton {
+    margin-left: 20px;
+}
+.UploadFormFlexButtonHuy {
+    border: solid 0.5px #e3e3e4;
+    background-color: white;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}
+.UploadFormFlexButtonDang1 {
+    background-color: #ebebeb;
+    color: #a3a3a7;
+    outline: none;
+    border: none;
+    &[disabled] {
+        cursor: not-allowed;
+    }
+}
+
+.UploadFormFlexButtonDang2 {
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(254, 44, 85, 0.9);
+    }
+    border: none;
+    color: white;
+    background-color: #fe2c55;
+}

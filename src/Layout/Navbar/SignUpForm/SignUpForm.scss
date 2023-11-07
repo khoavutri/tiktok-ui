@@ -1,0 +1,87 @@
+.login-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 1);
+    padding: 20px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), -3px -3px 6px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(100px) brightness(120%);
+    width: 30%;
+    height: 82%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+    border-radius: 10px;
+}
+.lololo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.login-form input,
+.login-form button {
+    display: block;
+    margin-bottom: 10px;
+}
+.phu {
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.chotoi {
+    overflow: auto;
+    padding-right: 10px;
+}
+.nhap {
+    border-radius: 5px;
+    background-color: #f1f1f2;
+    border: #a9aaae;
+    height: 40px;
+    width: 20vw;
+    color: #a9aaae;
+    outline: none;
+    padding-left: 10px;
+    border-color: rgba(0, 0, 0, 0.3);
+}
+.nha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #a9aaae;
+    height: 40px;
+    width: 20vw;
+    border: none;
+}
+
+.nhaa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-color: #fe2c55;
+    height: 40px;
+    width: 20vw;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+    border: none;
+}
+.block {
+    display: none;
+}
+.io:hover {
+    color: #fe2c55;
+}

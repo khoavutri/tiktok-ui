@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home';
+import Folowing from './Pages/Folowing';
+import Upload from './Pages/Upload';
+import Profile from './Pages/Profile';
+import DefaultLayout from './Layout/DefaultLayout';
+import ANotSlidebarLayout from './Layout/ANotSlidebarLayout';
+import Discover from './Pages/Discover';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Routes>
+                    <Route path="/" element={<DefaultLayout Children={<Home />} />} />
+                    <Route path="/Following" element={<DefaultLayout Children={<Folowing />} />} />
+                    <Route path="/Discover" element={<DefaultLayout Children={<Discover />} />} />
+                    <Route path="/Upload" element={<ANotSlidebarLayout children={<Upload />} />} />
+                    <Route path="/:profile" element={<DefaultLayout Children={<Profile />} />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

@@ -1,0 +1,197 @@
+.EditProfileMan {
+    height: 100vh;
+    width: 100vw;
+    z-index: 199;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.EditProfile {
+    z-index: 200;
+    width: 40vw;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'TikTokFont';
+}
+.EditProfileHead {
+    width: 100%;
+    height: 10vh;
+    border-bottom: solid rgba(0, 0, 0, 0.1) 0.5px;
+    position: relative;
+}
+.EditProfileClose {
+    position: absolute;
+    right: 2vw;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 32px;
+    top: calc(5vh - 16px);
+    &:hover {
+        cursor: pointer;
+    }
+}
+.EditProfile_Center {
+    width: 36vw;
+    display: flex;
+    flex-direction: column;
+}
+.EditProfile_Center-imgForm {
+    height: 20vh;
+    width: 100%;
+    border-bottom: solid rgba(0, 0, 0, 0.1) 0.5px;
+    position: relative;
+}
+.EditProfile_Center-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    height: 6vw;
+    width: 6vw;
+    border: black solid 0.5px;
+}
+.EditProfile_Center-Link {
+    width: 100%;
+    height: 10vh;
+    border-bottom: solid rgba(0, 0, 0, 0.1) 0.5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.EditProfile_Center-Link--input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 5vh;
+    background-color: #f1f1f2;
+    border: none;
+    outline: solid 0.4px rgba(0, 0, 0, 0.1);
+    padding-left: 10px;
+    padding-right: 5px;
+    border-radius: 5px;
+}
+.EditProfile_Center-Link--check {
+    position: absolute;
+    right: 10%;
+    height: 5vh;
+    width: 5vw;
+    border: none;
+    color: white;
+    background-color: #fe2c55;
+    border-radius: 3px;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+}
+.EditProfile_Center-Link--check[disabled] {
+    cursor: not-allowed;
+    background-color: #f1f1f2;
+    color: #a7a7ab;
+}
+.EditProfile_Center-userName {
+    height: 25vh;
+    border-bottom: solid rgba(0, 0, 0, 0.1) 0.5px;
+    position: relative;
+}
+.EditProfile_Center-userName--content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    justify-content: center;
+}
+.EditProfile_Center-userName--content_input {
+    width: 100%;
+    height: 5vh;
+    background-color: #f1f1f2;
+    border: none;
+    outline: solid 0.4px rgba(0, 0, 0, 0.1);
+    padding-left: 10px;
+    padding-right: 5px;
+    border-radius: 5px;
+}
+.EditProfile_Center-Bio {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.EditProfile_Center-Bio--input {
+    width: 50%;
+    height: 10vh;
+    background-color: #f1f1f2;
+    border: none;
+    outline: solid 0.4px rgba(0, 0, 0, 0.1);
+    padding-left: 10px;
+    padding-right: 5px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    resize: none;
+}
+.EditProfile_Center-Bio--input_dem {
+    position: absolute;
+    right: 10vw;
+    bottom: 3vh;
+    color: rgba(0, 0, 0, 0.3);
+}
+.EditProfile_Bottom {
+    width: 100%;
+    height: 8vh;
+    border-top: solid rgba(0, 0, 0, 0.1) 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.EditProfile_Bottom-button {
+    height: 5vh;
+    width: 6vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    margin-right: 20px;
+    text-align: center;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.EditProfile_Bottom-buttonHuy {
+    background-color: white;
+    border: #e3e3e4 solid 0.3px;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}
+.EditProfile_Bottom-buttonLuu[disabled] {
+    background-color: #f1f1f2;
+    color: #a7a7ab;
+    cursor: not-allowed;
+}
+.EditProfile_Bottom-buttonLuu {
+    background-color: #fe2c55;
+    color: white;
+    &:hover {
+        opacity: 0.9;
+    }
+}

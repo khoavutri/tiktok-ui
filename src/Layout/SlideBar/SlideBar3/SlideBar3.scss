@@ -1,0 +1,40 @@
+.SlideBar3 {
+    width: 15vw;
+    margin-top: 10px;
+}
+.SlideBar3Button {
+    width: 100%;
+    height: 55px;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 10px;
+    background-image: url(https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/tiktok/webapp/main/webapp-desktop/045b2fc7c278b9a30dd0.png);
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.SlideBar3ButtonContent {
+    &:hover {
+        animation-name: zoomIn;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+}
+@keyframes zoomIn {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.08);
+    }
+}
+.SlideBar3ButtonContentLink {
+    color: #8a8b91;
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline !important;
+    }
+}

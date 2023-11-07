@@ -1,0 +1,16 @@
+.SlideBar1Button {
+    width: 16vw;
+    height: 50px;
+    border: none;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    padding-left: 10px;
+}
+.SlideBar1Button[disabled] {
+    cursor: not-allowed;
+}

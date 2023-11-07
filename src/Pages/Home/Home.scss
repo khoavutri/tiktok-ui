@@ -1,0 +1,172 @@
+.Home {
+    margin-top: 60px;
+    width: 83.33vw;
+    height: calc(100vh - 60px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 3px;
+    }
+    &::-webkit-scrollbar-track {
+        background: white;
+    }
+    &:hover {
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.04);
+        }
+    }
+}
+.HomeE {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.HomeAvatar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60px;
+    margin-right: 10px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.HomeAvatarImg {
+    height: 60px;
+    width: 60px;
+    border: none;
+    border-radius: 50%;
+}
+.HomeAvatarImg1 {
+    height: 60px;
+    width: 60px;
+    border: solid 0.5px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+}
+.HomeContent {
+    display: flex;
+    flex-direction: column;
+}
+.HomeContentSubject {
+    display: flex;
+}
+.HomeContentSubjectOther {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 428px;
+}
+.HomeContentSubjectFollower {
+    margin-top: 15px;
+    min-width: 96px;
+    height: 36px;
+    background-color: white;
+    border: solid 1px #fe2c55;
+    color: #fe2c55;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(254, 44, 85, 0.08);
+    }
+}
+.HomeContentSubjectFollower1 {
+    margin-top: 15px;
+    min-width: 96px;
+    height: 36px;
+    background-color: white;
+    border: solid 1px #e3e3e4;
+    color: black;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}
+.HomeContentContent {
+    margin-top: 15px;
+    display: flex;
+}
+.HomeContentContentImg {
+    height: 476.1px;
+    max-width: 476.1px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+.HomeContentContentIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.HomeContentContentIconButton {
+    width: 48px;
+    background-color: white;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.HomeContentContentIconButtonSpan {
+    border-radius: 50%;
+    background-color: #f1f1f2;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.HomeContentContentIconButtonStrong {
+    color: rgba(22, 24, 35, 0.75);
+    font-family: 'IBM Plex Sans', TikTokFont, Arial, Tahoma, PingFangSC, sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+}
+.HomeContentSubjectDots {
+    color: black;
+    font-size: 27px;
+    margin-top: 15px;
+    margin-left: 50px;
+}
+.ChaHomeContentSubjectDots {
+    position: relative;
+    &:hover {
+        cursor: pointer;
+        .xoaHomeContentSubjectDots {
+            display: block;
+        }
+    }
+}
+.xoaHomeContentSubjectDots {
+    display: none;
+    background-color: white;
+    position: absolute;
+    top: 50px;
+    box-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1), -0.5px -0.5px 1px rgba(0, 0, 0, 0.1);
+    height: 25px;
+    width: 65px;
+    right: -20px;
+    text-align: center;
+    border-radius: 2px;
+    color: black;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}
+.HomeContentgachChan {
+    &:hover {
+        text-decoration: underline;
+    }
+}

@@ -1,0 +1,89 @@
+.Following {
+    margin-top: 60px;
+    width: 83.33vw;
+    height: calc(100vh - 60px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: 'IBM Plex Sans', TikTokDisplayFont, Arial, Tahoma, PingFangSC, sans-serif;
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 3px;
+    }
+    &::-webkit-scrollbar-track {
+        background: white;
+    }
+    &:hover {
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.04);
+        }
+    }
+}
+.Following_Content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(30%, 1fr));
+    gap: 10px;
+    width: 60%;
+    margin-top: 3vh;
+}
+.Following_Content-img {
+    width: 100%;
+    height: 42vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    &:hover {
+        cursor: pointer;
+    }
+    border-radius: 10px;
+    background-size: cover;
+}
+.Following_Content-img--img {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    background-color: white;
+}
+.Following_Content-img--button {
+    height: 32px;
+    width: 75%;
+    border: none;
+    color: white;
+    background-color: #fe2c55;
+    border-radius: 3px;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    &:hover {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), rgb(254, 44, 85);
+    }
+    margin-bottom: 20px;
+}
+.Following_Content-img--button-hong {
+    height: 32px;
+    width: 75%;
+    border: none;
+    color: black;
+    background-color: white;
+    border-radius: 3px;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    &:hover {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), rgb(255, 255, 255);
+    }
+    margin-bottom: 20px;
+}
+.Following_Content {
+    a {
+        color: white;
+    }
+}

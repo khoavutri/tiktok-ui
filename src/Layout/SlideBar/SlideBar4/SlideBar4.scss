@@ -1,0 +1,51 @@
+.SlideBar4 {
+    width: 15vw;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: 'IBM Plex Sans', TikTokFont, Arial, Tahoma, PingFangSC, sans-serif;
+}
+.SlideBar4Icon {
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+    display: flex;
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.SlideBar4IconImg {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.SlideBar4IconContent {
+    display: flex;
+    flex-direction: column;
+    height: 32px;
+    justify-content: center;
+    align-items: flex-start;
+    p {
+        margin: 0;
+        padding: 0;
+        color: rgba(0, 0, 0, 0.7);
+    }
+    margin: 0;
+}
+.SlideBar4ThemBot {
+    color: #fe2c55;
+    &:hover {
+        cursor: pointer;
+    }
+    margin-bottom: 10px;
+}
+.SlideBar4IconContent2 {
+    color: rgba(0, 0, 0, 0.3);
+    text-align: start;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}

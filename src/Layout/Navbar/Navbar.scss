@@ -1,0 +1,267 @@
+.Navbar {
+    width: 100vw;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom: solid 0.5px rgba(229, 229, 229, 1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+}
+.Navbar_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+}
+.Navbar_form {
+    background-color: rgba(241, 241, 242, 1);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative; /* Thêm thuộc tính position */
+    width: 600px;
+}
+.input_img-icon {
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+    position: absolute;
+    right: 85px;
+    top: 30%;
+}
+.input_img-icon1 {
+    position: absolute;
+    right: 85px;
+    top: 30%;
+    animation: rotateAnimation 2s infinite linear;
+}
+.input_form {
+    outline: none;
+    border: none;
+    background-color: rgba(241, 241, 242, 1);
+    height: 50px;
+    width: 500px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding-right: 30px;
+}
+.button_icon {
+    border: none;
+    background-color: rgba(241, 241, 242, 1);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 50px;
+    border-left: solid 0.5px rgba(0, 0, 0, 1);
+}
+.an {
+    display: none !important;
+}
+.hien {
+    display: block !important;
+}
+.button_icon:hover {
+    cursor: pointer;
+}
+
+.Navbar_iconBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+Link {
+    outline: none;
+    text-decoration: none;
+    color: black;
+}
+.cangiuu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    justify-content: center;
+    border: solid 0.5px rgba(229, 229, 229, 1);
+    width: 100px;
+    height: 40px;
+    padding-top: 6px;
+    font-weight: bold;
+}
+.cangiuu:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.iconbar_message {
+    background-color: white;
+    border: none;
+    margin-top: 8px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.butonnnn {
+    background-color: white;
+    border: none;
+    margin-left: 10px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.mo {
+    &:hover {
+        opacity: 0.9;
+        cursor: pointer;
+    }
+}
+.tuychon1 {
+    display: none;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.3);
+    right: 0px;
+}
+.tuychon {
+    position: relative;
+}
+.tuychon:hover {
+    .tuychon1 {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+    }
+}
+
+.tuychon1_icon {
+    display: flex;
+    flex-direction: row;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(229, 229, 229, 1);
+        border-radius: 10px;
+    }
+    width: 200px;
+    height: 50px;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+p {
+    color: red;
+}
+.sai_sai {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border: solid 0.5px rgba(229, 229, 229, 1) !important;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.oloso {
+    &:hover {
+        cursor: pointer;
+    }
+}
+.navBarMenuAvatar {
+    position: relative;
+    &:hover {
+        .navBarMenuAvatarIcon {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+.navBarMenuAvatarIcon {
+    display: none;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), -2px -2px 4px rgba(0, 0, 0, 0.2);
+}
+.navBarMenuAvatarIconCon {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    align-items: center;
+    &:hover {
+        background-color: rgba(229, 229, 229, 1);
+    }
+}
+.navBarMenuAvatarIconConP {
+    color: black;
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+.loading {
+    animation: rotateAnimation 2s infinite linear;
+}
+@keyframes rotateAnimation {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+.Navbar_formSearch {
+    position: relative;
+}
+.Navbar_formResult {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 55px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px -2px 4px rgba(0, 0, 0, 0.1);
+}
+.Navbar_formResultButton1 {
+    background-color: white;
+    display: flex;
+    width: 600px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.08);
+
+        .Navbar_formResultButton1Dot {
+            display: block;
+        }
+    }
+    padding-left: 20px;
+    position: relative;
+}
+.Navbar_formResultButton1Img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.Navbar_formResultButton1Content {
+    font-weight: bold;
+}
+.Navbar_formResultButton1Dot {
+    display: none;
+    position: absolute;
+    right: 20px;
+}
+body {
+    overflow-y: overlay;
+}
+.phancontro {
+    &:hover {
+        cursor: pointer;
+    }
+}
