@@ -8,8 +8,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: white;
-    background-color: red;
+    color: black;
+
     font-family: 'IBM Plex Sans', TikTokDisplayFont, Arial, Tahoma, PingFangSC, sans-serif;
     &::-webkit-scrollbar {
         width: 10px;
@@ -29,22 +29,54 @@
 }
 .Discover_content {
     display: grid;
-    grid-template-columns: repeat(4, minmax(20%, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(4, minmax(22%, 1fr));
+    gap: 20px;
     width: 94%;
     margin-top: 3vh;
 }
-.Discover_Content-img {
+.Discover_Content-child {
     width: 100%;
-    height: 42vh;
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
+    align-items: flex-start;
     &:hover {
         cursor: pointer;
     }
     border-radius: 10px;
     background-size: cover;
+    p {
+        color: black;
+    }
+}
+.Discover_Content-child_img {
+    width: 100%;
+    border-radius: 10px;
+    height: 55vh;
+    object-fit: cover;
+}
+.Discover_Content-child_flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.Discover_Content-child_flex-user {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+.Discover_Content-child_flex-user-img {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+.Discover_Content-child_flex-user-link {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+.Discover_Content-child_flex-like {
+    display: flex;
+    align-items: center;
 }

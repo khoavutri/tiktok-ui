@@ -1,0 +1,468 @@
+.Video {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    font-family: 'IBM Plex Sans', TikTokDisplayFont, Arial, Tahoma, PingFangSC, sans-serif;
+    border-radius: 10px;
+    p {
+        margin: 0;
+        padding: 0;
+        color: black;
+    }
+    overflow: hidden;
+}
+.Video_left {
+    width: 63.33%;
+    height: 100vh;
+    background-color: red;
+    position: relative;
+    cursor: pointer;
+}
+
+.Video_left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(20px);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+}
+
+.Video_left-content {
+    width: 45%;
+    height: 100vh;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+}
+
+.Video_left-content--img {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+}
+.Video_left-icon-speaker {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+.Video_left-icon {
+    height: 40px;
+    width: 40px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.08) !important;
+    }
+}
+.Video_left-icon-to + .Video_left-icon-to {
+    margin-top: 15px;
+}
+.Video_left-icon-close {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.Video_left-icon-dots {
+    top: 20px;
+    right: 20px;
+    position: absolute;
+}
+.Video_left-topRight {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: calc(50% - 47.5px);
+    right: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.Video_right {
+    width: 36.67%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.Video_right-cuon {
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 3px;
+    }
+    &::-webkit-scrollbar-track {
+        background: white;
+    }
+    &:hover {
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.04);
+        }
+    }
+}
+.Video_right-top {
+    background-color: #f8f8f8;
+    width: 90%;
+    height: auto;
+    margin-top: 3vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Video_right-top_flex {
+    margin-top: 20px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.gachChan {
+    text-decoration: underline;
+}
+.point {
+    cursor: pointer;
+}
+.VideoContentSubjectFollower {
+    min-width: 96px;
+    height: 36px;
+    color: white;
+    background-color: #fe2c55;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+    border: none;
+    border-radius: 2px;
+}
+.VideoContentSubjectFollower1 {
+    min-width: 96px;
+    height: 36px;
+    background-color: white;
+    border: solid 1px #e3e3e4;
+    color: black;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.005);
+    }
+    border-radius: 2px;
+}
+.Video_right-function {
+    width: 86%;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+.Video_right-function-left {
+    display: flex;
+    align-items: center;
+}
+.Video_right-function--div {
+    height: 32px;
+    width: 32px;
+    background-color: #f1f1f2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+.Video_right-function--div_giua {
+    display: flex;
+    align-items: center;
+}
+.Video_right-function--div_giua + .Video_right-function--div_giua {
+    margin-left: 15px;
+}
+.point {
+    cursor: pointer;
+}
+.Video_right-function-right {
+    display: flex;
+    align-items: center;
+}
+.Video_right-function-right--icon {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Video_right-function-right--share {
+    &:hover {
+        background-color: #f1f1f2;
+    }
+}
+.Video_right-function-right--icon + .Video_right-function-right--icon {
+    margin-left: 6px;
+}
+.Video_right-copyLink {
+    width: 86%;
+    margin-top: 20px;
+    display: flex;
+}
+.Video_right-copyLink--p {
+    width: 70%;
+    background-color: #f1f1f2;
+    height: 36px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    color: #63656b !important;
+    padding-left: 10px !important;
+    border: #e3e3e4 solid 0.2px;
+    border-right: none;
+}
+.Video_right-copyLink--button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    background-color: #f1f1f2;
+    height: 36px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: #e3e3e4 solid 0.2px;
+    border-left: none;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+    cursor: pointer;
+    font-weight: 700;
+}
+.Video_right-headline {
+    width: 100%;
+    border-bottom: #e3e3e4 solid 0.2px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.Video_right-headline--sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 3;
+}
+.Video_right-headline--left {
+    width: 43%;
+    font-family: 'IBM Plex Sans', TikTokFont, Arial, Tahoma, PingFangSC, sans-serif;
+    font-size: 14px;
+    overflow: auto;
+    line-height: 24px;
+    cursor: pointer;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.Video_right-headline--right {
+    width: 43%;
+    font-family: 'IBM Plex Sans', TikTokFont, Arial, Tahoma, PingFangSC, sans-serif;
+    font-size: 14px;
+    overflow: auto;
+    line-height: 24px;
+    cursor: pointer;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.Video_right-headline--mo {
+    color: #63656b;
+}
+.Video_right-headline--dam {
+    color: black;
+    font-weight: 700;
+    border-bottom: 2px black solid;
+}
+
+.Video_right-cmts {
+    width: 86%;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+.Video_right-cmt {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Video_right-cmt_left {
+    display: flex;
+    align-items: center;
+    max-width: 90%;
+    height: 100%;
+}
+.Video_right-cmt_left-divImg {
+    height: 100%;
+    width: 40px;
+    margin-right: 15px;
+    position: relative;
+}
+
+.Video_right-cmt_left-img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.Video_right-cmt_left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: calc(100% - 55px);
+    p {
+        width: 100%;
+        color: black;
+        word-wrap: break-word;
+        font-size: 14px;
+    }
+}
+.Video_right-cmt_left-content--flex {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+}
+.point {
+    cursor: pointer;
+}
+.Video_right-cmt_right {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 15px;
+    position: relative;
+}
+.Video_right-cmt_left-content--Link {
+    &:hover {
+        text-decoration: underline;
+    }
+    cursor: point;
+}
+.Video_right-cmt_left-divImg:hover + .Video_right-cmt_left-content .Video_right-cmt_left-content--Link h5,
+.Video_right-cmt_left-divImg:hover + .Video_right-cmt_left-content .Video_right-cmt_left-content--Link h5:hover {
+    text-decoration: underline;
+}
+.Video_right-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 36.67%;
+    min-height: 80px;
+    height: auto;
+    border-top: #e3e3e4 solid 0.2px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    z-index: 3;
+}
+.Video_right-bottom_input {
+    background-color: #f1f1f2;
+    width: 80%;
+    border: 1px solid #f1f1f2;
+    border-radius: 10px;
+    padding-left: 10px;
+    resize: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+
+.Video_right-bottom_input:focus {
+    border-color: gray;
+    outline: none;
+}
+.Video_right-bottom_div {
+    color: rgb(254, 44, 85);
+    font-family: 'IBM Plex Sans', TikTokFont, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    flex: 0 0 48px;
+    font-size: 14px;
+    line-height: 39px;
+    text-align: right;
+    margin-right: 4px;
+}
+.Video_right-bottom_div[disabled] {
+    color: gray;
+    cursor: default;
+}
+.Video_right-cmt:hover {
+    .Video_right-cmt_right-dots {
+        opacity: 1 !important;
+    }
+}
+.Video_right-cmt_right-dots {
+    cursor: pointer;
+    z-index: 4;
+}
+.Video_right-cmt_right-div {
+    position: relative;
+}
+.Video_right-cmt_right-xoa {
+    display: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+.Video_right-cmt_right:hover .Video_right-cmt_right-xoa {
+    display: flex;
+    position: absolute;
+    background-color: white;
+    border: none;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1), -1px -1px 2px rgba(0, 0, 0, 0.1);
+    height: 40px;
+    width: 120px;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+}
+.Video_right-cmt_right-xoa:hover {
+    color: #fe2c55;
+}
+.DoubleClickToLike {
+    position: fixed;
+    font-size: 100px;
+    z-index: 4;
+    animation: toVamo 0.7s ease-out;
+}
+
+@keyframes toVamo {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}

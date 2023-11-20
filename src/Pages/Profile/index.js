@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../Profile/Profile.scss';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { AiFillLock } from 'react-icons/ai';
 import { searchProfile, follow, unFollow, autoLogin } from '../../utils/CallApiOverView';
@@ -80,16 +80,7 @@ const Profile = () => {
                     Bio={data.user.bio}
                 />
             )}
-            {showLogin && (
-                <img
-                    src="https://icons.iconarchive.com/icons/icons8/ios7/32/User-Interface-Delete-Sign-icon.png"
-                    width="32"
-                    height="32"
-                    style={{ zIndex: '101', position: 'fixed', top: '15vh', right: '39vw' }}
-                    className="oloso"
-                    onClick={() => setShowLogin(false)}
-                ></img>
-            )}
+
             <LoginForm showLoginForm={showLogin} />
             <div className="Profile">
                 <div className="ProfileHead1">
@@ -186,9 +177,13 @@ const Profile = () => {
                     {data &&
                         data.videos &&
                         data.videos.map((number, index) => (
-                            <div key={index} className="ProfileBaiVietImg">
+                            <Link
+                                key={index}
+                                className="ProfileBaiVietImg"
+                                to={'/' + data.user.userName + '/video/' + number.id}
+                            >
                                 <img src={number.link} alt="a" className="ProfileBaiVietImgContent" />
-                            </div>
+                            </Link>
                         ))}
                 </div>
             </div>

@@ -36,7 +36,7 @@ function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await selectImgPostAll(10, userId);
+                const result = await selectImgPostAll(20, userId);
                 setData(result);
             } catch (error) {
                 console.error(error);
@@ -242,7 +242,9 @@ function Home() {
                                         )}
                                     </div>
                                     <div className="HomeContentContent">
-                                        <img src={number.video.link} className="HomeContentContentImg" />
+                                        <Link to={'/' + number.user.userName + '/video/' + number.video.id}>
+                                            <img src={number.video.link} className="HomeContentContentImg" />
+                                        </Link>
                                         <div className="HomeContentContentIcon">
                                             {number.daLike === 0 && (
                                                 <button
@@ -285,14 +287,16 @@ function Home() {
                                                     </strong>
                                                 </button>
                                             )}
-                                            <button className="HomeContentContentIconButton">
-                                                <span className="HomeContentContentIconButtonSpan">
-                                                    <BsFillChatDotsFill style={{ height: '20px', width: '20px' }} />
-                                                </span>
-                                                <strong className="HomeContentContentIconButtonStrong">
-                                                    {number.cmts}
-                                                </strong>
-                                            </button>
+                                            <Link to={'/' + number.user.userName + '/video/' + number.video.id}>
+                                                <button className="HomeContentContentIconButton">
+                                                    <span className="HomeContentContentIconButtonSpan">
+                                                        <BsFillChatDotsFill style={{ height: '20px', width: '20px' }} />
+                                                    </span>
+                                                    <strong className="HomeContentContentIconButtonStrong">
+                                                        {number.cmts}
+                                                    </strong>
+                                                </button>
+                                            </Link>
                                             <button className="HomeContentContentIconButton">
                                                 <span className="HomeContentContentIconButtonSpan">
                                                     <FaShare style={{ height: '20px', width: '20px' }} />

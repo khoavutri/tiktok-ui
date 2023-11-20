@@ -234,7 +234,9 @@ function Following() {
                                                 </div>
                                             </div>
                                             <div className="HomeContentContent">
-                                                <img src={number.video.link} className="HomeContentContentImg" />
+                                                <Link to={'/' + number.user.userName + '/video/' + number.video.id}>
+                                                    <img src={number.video.link} className="HomeContentContentImg" />
+                                                </Link>
                                                 <div className="HomeContentContentIcon">
                                                     {number.daLike === 0 && (
                                                         <button
@@ -285,16 +287,18 @@ function Following() {
                                                             </strong>
                                                         </button>
                                                     )}
-                                                    <button className="HomeContentContentIconButton">
-                                                        <span className="HomeContentContentIconButtonSpan">
-                                                            <BsFillChatDotsFill
-                                                                style={{ height: '20px', width: '20px' }}
-                                                            />
-                                                        </span>
-                                                        <strong className="HomeContentContentIconButtonStrong">
-                                                            {number.cmts}
-                                                        </strong>
-                                                    </button>
+                                                    <Link to={'/' + number.user.userName + '/video/' + number.video.id}>
+                                                        <button className="HomeContentContentIconButton">
+                                                            <span className="HomeContentContentIconButtonSpan">
+                                                                <BsFillChatDotsFill
+                                                                    style={{ height: '20px', width: '20px' }}
+                                                                />
+                                                            </span>
+                                                            <strong className="HomeContentContentIconButtonStrong">
+                                                                {number.cmts}
+                                                            </strong>
+                                                        </button>
+                                                    </Link>
                                                     <button className="HomeContentContentIconButton">
                                                         <span className="HomeContentContentIconButtonSpan">
                                                             <FaShare style={{ height: '20px', width: '20px' }} />

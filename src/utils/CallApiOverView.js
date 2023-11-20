@@ -239,7 +239,80 @@ const selectRandomNotLogin = async (userId) => {
     });
     return data.data;
 };
+const searchAllCmtsByVideoId = async (videoId, userId) => {
+    const data = await request.get('public/SearchAllCmtsByVideoId', {
+        params: {
+            videoId: videoId,
+            userId: userId,
+        },
+    });
+    return data;
+};
+const searchBaiVietByVideoId = async (videoId, userId) => {
+    const data = await request.get('public/SearchBaiVietByVideoId', {
+        params: {
+            videoId: videoId,
+            userId: userId,
+        },
+    });
+    return data;
+};
+const createCmt = async (userId, videoId, content, bearToken) => {
+    try {
+        const response = await request.post(
+            'user/CreateCmt',
+            JSON.stringify({
+                id: 0,
+                userId: userId,
+                videoId: videoId,
+                content: content,
+            }),
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${bearToken}`,
+                },
+            },
+        );
 
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
+const deleteCmt = async (id, bearToken) => {
+    const data = await request.delete('user/DeleteCmt', {
+        params: {
+            cmtId: id,
+        },
+        headers: {
+            Authorization: `Bearer ${bearToken}`,
+        },
+    });
+    return data;
+};
+const searchPostBynavBar = async (q, size, userId) => {
+    const data = await request.get('public/Search-Post-By-navBar', {
+        params: {
+            size: size,
+            userId: userId,
+            q: q,
+        },
+    });
+
+    return data.data;
+};
+const searchProfileByNavBar = async (q, size, userId) => {
+    const data = await request.get('public/Search-profile-By-navBar', {
+        params: {
+            size: size,
+            userId: userId,
+            q: q,
+        },
+    });
+
+    return data.data;
+};
 export {
     sellectUserById,
     autoLogin,
@@ -259,5 +332,11 @@ export {
     updateMyProfile,
     selectImgPostAllFollowing,
     selectRandomNotLogin,
+    searchAllCmtsByVideoId,
+    searchBaiVietByVideoId,
+    createCmt,
+    deleteCmt,
+    searchPostBynavBar,
+    searchProfileByNavBar,
     test,
 };

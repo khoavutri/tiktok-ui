@@ -74,8 +74,15 @@ function SearchForm() {
             </>
         );
     };
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            window.location.href = '/search/?q=' + Value;
+
+            event.preventDefault();
+        }
+    };
     return (
-        <div className="Navbar_formSearch">
+        <div className="Navbar_formSearch" ref={inputRef}>
             <div
                 className="Navbar_form"
                 onClick={() => {
@@ -83,15 +90,15 @@ function SearchForm() {
                 }}
             >
                 <input
-                    ref={inputRef}
                     className="input_form"
                     placeholder="Enter your Search"
                     value={Value}
                     onChange={(e) => setValue(e.target.value)}
                     style={{ autocomplete: 'off' }}
+                    onKeyDown={handleKeyDown}
                 />
                 {Value !== '' && <Close />}
-                <button className="button_icon">
+                <button className="button_icon" onClick={() => (window.location.href = '/search/?q=' + Value)}>
                     <img
                         src="https://icons.iconarchive.com/icons/designcontest/outline/24/Magnifier-icon.png"
                         width="24"
@@ -102,20 +109,23 @@ function SearchForm() {
 
             <div className={'Navbar_formResult ' + showResultSearch}>
                 {Value && (
-                    <Link style={{ marginTop: '10px', marginBottom: data.length > 0 ? '0' : '10px' }}>
+                    <div
+                        style={{ marginTop: '10px', marginBottom: data.length > 0 ? '0' : '10px' }}
+                        onClick={() => (window.location.href = '/search/?q=' + Value)}
+                    >
                         <div className={'Navbar_formResultButton1'} style={{ height: '30px' }}>
                             <BsSearch width="24" height="24" className="Navbar_formResultButton1Img" />
                             <div>{Value}</div>
                             <BsThreeDots className="Navbar_formResultButton1Dot" />
                         </div>
-                    </Link>
+                    </div>
                 )}
 
                 {data.length > 0 && (
                     <>
                         <p style={{ marginLeft: '20px', color: 'gray' }}>Tài khoản: </p>
                         {data.map((number, index) => (
-                            <div key={index} onClick={() => alert('khoa')}>
+                            <div key={index} onClick={() => (window.location.href = '/' + number.userName)}>
                                 <div className={'Navbar_formResultButton1'}>
                                     <img
                                         src={
