@@ -184,7 +184,7 @@ const searchProfile = async (userId, userName) => {
                 userName: userName,
             },
         });
-        return response.data;
+        return response;
     } catch (error) {
         throw error;
     }

@@ -188,6 +188,7 @@ function Video() {
                         if (sult.data.user.userName !== path.slice(0, path.indexOf('/'))) {
                             window.location.href = '/' + sult.data.user.userName + '/video/' + sult.data.video.id;
                         }
+                        if (sult.status !== 200) window.location.href = '/NotFound';
                         setBaiViet(sult.data);
                         setCmts(result.data);
                     } else {

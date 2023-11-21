@@ -20,7 +20,11 @@ const Profile = () => {
         const fetchData = async () => {
             try {
                 const result = await searchProfile(userId, profile);
-                setData(result);
+                if (result.status === 200) {
+                    setData(result.data);
+                } else {
+                    window.location.href = '/NotFound';
+                }
             } catch (error) {
                 console.error(error);
             }
