@@ -9,13 +9,14 @@ import Discover from './Pages/Discover';
 import Video from './Pages/Video';
 import NotFound from './Pages/NotFound';
 import Search from './Pages/Search';
-
+import Admin from './Pages/Admin';
 function App() {
     return (
         <Router>
             <div className="App">
                 <Routes>
                     <Route path="/" element={<DefaultLayout Children={<Home />} />} />
+                    <Route path="/admin" element={<Admin />} />
                     <Route path="/Following" element={<DefaultLayout Children={<Folowing />} />} />
                     <Route path="/Discover" element={<DefaultLayout Children={<Discover />} />} />
                     <Route path="/Upload" element={<ANotSlidebarLayout children={<Upload />} />} />

@@ -1,0 +1,17 @@
+.Admin_Navbar {
+    width: 100%;
+    height: 55px;
+    border-bottom: #dee2e6 solid 0.3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.Admin_Navbar * {
+    cursor: pointer;
+    opacity: 0.8;
+    &:hover {
+        opacity: 1;
+    }
+    font-size: 22px;
+    margin-right: 15px;
+}

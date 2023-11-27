@@ -5,6 +5,8 @@ import MenuNavbar from './MenuNavbar';
 import LoginForm from './LoginForm';
 import request from '../../utils/request';
 import { autoLogin } from '../../utils/CallApiOverView';
+import { RiAdminLine } from 'react-icons/ri';
+
 import SearchForm from './SearchForm';
 const MENUBAR_1 = [
     {
@@ -233,6 +235,14 @@ function Navbar() {
     const IconBar2 = () => {
         return (
             <div className="Navbar_iconBar">
+                {localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).role === 'ADMIN' && (
+                    <Link className="Navbar_iconBar--admin_link" to={'/admin'}>
+                        <div className="Navbar_iconBar--admin">
+                            <RiAdminLine />
+                            Admin
+                        </div>
+                    </Link>
+                )}
                 <Link to="/Upload" style={{ textDecoration: 'none', color: 'black' }}>
                     <div className="cangiuu">
                         <img

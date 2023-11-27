@@ -1,0 +1,25 @@
+.Admin-slideBar {
+    height: 100vh;
+    width: 16.67vw;
+    border-right: solid rgba(0, 0, 0, 0.06) 0.2px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Admin-slideBar .xx {
+    width: 92%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+    border-radius: 5px;
+    // &:hover {
+    //     background-color: rgba(0, 0, 0, 0.01);
+    // }
+    cursor: pointer;
+}
+.Admin-slideBar .dam {
+    background-color: rgba(0, 0, 0, 0.06);
+}

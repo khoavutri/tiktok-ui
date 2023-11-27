@@ -265,3 +265,16 @@ body {
         cursor: pointer;
     }
 }
+.Navbar_iconBar--admin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.2);
+        transition: transform 0.8s ease-in-out;
+    }
+}
+.Navbar_iconBar--admin_link {
+    margin-right: 20px;
+}
