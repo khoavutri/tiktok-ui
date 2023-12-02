@@ -313,6 +313,38 @@ const searchProfileByNavBar = async (q, size, userId) => {
 
     return data.data;
 };
+const countAllVideos = async (bearToken) => {
+    const data = await request.get('admin/countAll-videos', {
+        headers: {
+            Authorization: `Bearer ${bearToken}`,
+        },
+    });
+    return data;
+};
+const countAllUsers = async (bearToken) => {
+    const data = await request.get('admin/countAll-users', {
+        headers: {
+            Authorization: `Bearer ${bearToken}`,
+        },
+    });
+    return data;
+};
+const countAllLikes = async (bearToken) => {
+    const data = await request.get('admin/countAll-likes', {
+        headers: {
+            Authorization: `Bearer ${bearToken}`,
+        },
+    });
+    return data;
+};
+const countAllCmts = async (bearToken) => {
+    const data = await request.get('admin/countAll-cmts', {
+        headers: {
+            Authorization: `Bearer ${bearToken}`,
+        },
+    });
+    return data;
+};
 export {
     sellectUserById,
     autoLogin,
@@ -338,5 +370,9 @@ export {
     deleteCmt,
     searchPostBynavBar,
     searchProfileByNavBar,
+    countAllVideos,
+    countAllUsers,
+    countAllLikes,
+    countAllCmts,
     test,
 };

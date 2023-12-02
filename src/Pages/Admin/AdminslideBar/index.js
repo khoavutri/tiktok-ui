@@ -2,9 +2,11 @@ import './AdminslideBar.scss';
 import { FaUser } from 'react-icons/fa6';
 import { RiDashboard3Fill } from 'react-icons/ri';
 import { FaPlus } from 'react-icons/fa';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { MdArticle } from 'react-icons/md';
+import { FaComments } from 'react-icons/fa';
 
-function AdminslideBar() {
+function AdminslideBar({ page, click }) {
     const [mau, setMau] = useState([1, 0, 0, 0]);
     function lamdi(li) {
         const n = 4;
@@ -15,6 +17,20 @@ function AdminslideBar() {
         a[li] = 1;
         setMau(a);
     }
+    useEffect(() => {
+        if (page === 'Dashboard') {
+            lamdi(0);
+        }
+        if (page === 'users') {
+            lamdi(1);
+        }
+        if (page === 'BaiViets') {
+            lamdi(2);
+        }
+        if (page === 'Comments') {
+            lamdi(3);
+        }
+    }, [page]);
     return (
         <>
             <div className="Admin-slideBar">
@@ -22,7 +38,7 @@ function AdminslideBar() {
                     style={{ marginTop: '20px' }}
                     className={mau[0] === 0 ? 'xx' : 'xx dam'}
                     onClick={() => {
-                        lamdi(0);
+                        click('Dashboard');
                     }}
                 >
                     <RiDashboard3Fill style={{ fontSize: '22px', marginRight: '10px' }} />
@@ -31,7 +47,7 @@ function AdminslideBar() {
                 <div
                     className={mau[1] === 0 ? 'xx' : 'xx dam'}
                     onClick={() => {
-                        lamdi(1);
+                        click('users');
                     }}
                 >
                     <FaUser style={{ fontSize: '22px', marginRight: '10px' }} />
@@ -40,20 +56,20 @@ function AdminslideBar() {
                 <div
                     className={mau[2] === 0 ? 'xx' : 'xx dam'}
                     onClick={() => {
-                        lamdi(2);
+                        click('BaiViets');
                     }}
                 >
-                    <FaPlus style={{ fontSize: '22px', marginRight: '10px' }} />
-                    <span>Tùy chọn</span>
+                    <MdArticle style={{ fontSize: '22px', marginRight: '10px' }} />
+                    <span>Bài Viết</span>
                 </div>
                 <div
                     className={mau[3] === 0 ? 'xx' : 'xx dam'}
                     onClick={() => {
-                        lamdi(3);
+                        click('Comments');
                     }}
                 >
-                    <FaPlus style={{ fontSize: '22px', marginRight: '10px' }} />
-                    <span>Tùy chọn</span>
+                    <FaComments style={{ fontSize: '22px', marginRight: '10px' }} />
+                    <span>Comments</span>
                 </div>
             </div>
         </>

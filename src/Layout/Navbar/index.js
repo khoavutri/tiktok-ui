@@ -236,7 +236,7 @@ function Navbar() {
         return (
             <div className="Navbar_iconBar">
                 {localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).role === 'ADMIN' && (
-                    <Link className="Navbar_iconBar--admin_link" to={'/admin'}>
+                    <Link className="Navbar_iconBar--admin_link" to={'/admin/'}>
                         <div className="Navbar_iconBar--admin">
                             <RiAdminLine />
                             Admin

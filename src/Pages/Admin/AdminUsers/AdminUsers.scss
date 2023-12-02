@@ -1,0 +1,99 @@
+.AdminUsers {
+    width: 95%;
+    margin-top: 20px;
+    height: calc(100vh - 100px);
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.AdminUsers_table {
+    width: 96%;
+    text-align: center;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+.AdminUsers_table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+.AdminUsers_table th,
+.AdminUsers_table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+.AdminUsers_table-button {
+    width: 80%;
+    height: 30px;
+    cursor: pointer;
+    border: rgba(0, 0, 0, 0.1) 0.2px solid;
+    background-color: white;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+.AdminUsers_table-BlueTick {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+}
+.AdminUsers_head {
+    width: 96%;
+    height: 55px;
+    border-bottom: 0.2px rgba(0, 0, 0, 0.05) solid;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    justify-content: space-between;
+}
+.AdminUsers_head-Search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+.AdminUsers_head-Search--input {
+    opacity: 0;
+    height: 30px;
+    width: 250px;
+    border-radius: 5px;
+    outline: none;
+    border: 0.2px solid rgba(0, 0, 0, 0.1);
+    padding-left: 10px;
+    font-size: 13px;
+    transition: opacity 0.3s ease-in-out;
+}
+.AdminUsers_head:hover .AdminUsers_head-Search--input {
+    opacity: 1;
+}
+.AdminUsers_paginate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.AdminUsers_paginate * + * {
+    margin-left: 3px;
+}
+.AdminUsers_paginate-icon {
+    min-width: 24px;
+    height: 24px;
+    background-color: white;
+    cursor: pointer;
+    border: 0.1px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    &:hover {
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
+    }
+}
+.AdminUsers_paginate-fixed {
+    cursor: pointer;
+    font-size: 18px;
+}
