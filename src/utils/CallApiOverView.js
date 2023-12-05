@@ -345,6 +345,23 @@ const countAllCmts = async (bearToken) => {
     });
     return data;
 };
+const searchPageAllAtAdmin = async (key, currentPage, size, bearToken) => {
+    try {
+        const response = await request.post('admin/search-pageAll-atAdmin', null, {
+            params: {
+                keyword: key.toString(),
+                currentPage: currentPage,
+                size: size,
+            },
+            headers: {
+                Authorization: `Bearer ${bearToken}`,
+            },
+        });
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
 export {
     sellectUserById,
     autoLogin,
@@ -374,5 +391,6 @@ export {
     countAllUsers,
     countAllLikes,
     countAllCmts,
+    searchPageAllAtAdmin,
     test,
 };

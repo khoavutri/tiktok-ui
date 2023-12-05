@@ -17,6 +17,9 @@ function App() {
                 <Routes>
                     <Route path="/" element={<DefaultLayout Children={<Home />} />} />
                     <Route path="/admin" element={<Admin />} />
+                    <Route path="/admin/users/:page" element={<Admin />} />
+                    <Route path="/admin/baiviets/:page" element={<Admin />} />
+                    <Route path="/admin/cmts/:page" element={<Admin />} />
                     <Route path="/Following" element={<DefaultLayout Children={<Folowing />} />} />
                     <Route path="/Discover" element={<DefaultLayout Children={<Discover />} />} />
                     <Route path="/Upload" element={<ANotSlidebarLayout children={<Upload />} />} />

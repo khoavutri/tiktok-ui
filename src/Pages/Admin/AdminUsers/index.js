@@ -7,11 +7,74 @@ import {
     MdOutlineKeyboardArrowLeft,
     MdOutlineKeyboardArrowRight,
 } from 'react-icons/md';
+import { useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
-import { useState } from 'react';
+import { countAllUsers, autoLogin, searchPageAllAtAdmin } from '../../../utils/CallApiOverView';
+const userTrenPage = 1;
 function AdminUsers() {
     const [searchValue, setSearchValue] = useState('');
     const [a, setA] = useState([1, 2, 3, 4, 5, 6, 7]);
+    const [n, setN] = useState(7);
+    const [data, setData] = useState([]);
+    const history = useNavigate();
+    const path = window.location.pathname.slice(13);
+    const callData = async () => {
+        const x = await searchPageAllAtAdmin(searchValue, path, userTrenPage, sessionStorage.getItem('jwt'));
+        setSearchValue('');
+        setData(x.data);
+    };
+
+    function convertBio(str) {
+        if (str.length <= 8) {
+            return str;
+        } else {
+            const firstPart = str.substring(0, 5);
+            return `${firstPart}...`;
+        }
+    }
+    useEffect(() => {
+        if (isNaN(path)) {
+            history('/NotFound');
+        }
+        const fetchData = async () => {
+            try {
+                var codeeee;
+                if (sessionStorage.getItem('jwt') !== null) {
+                    codeeee = sessionStorage.getItem('jwt');
+                } else {
+                    codeeee = await autoLogin({
+                        username: JSON.parse(localStorage.getItem('user')).userName,
+                        password: JSON.parse(localStorage.getItem('user')).passWord,
+                    });
+                }
+                const result = await countAllUsers(codeeee);
+                var soluongpageshh;
+                if (result.data % userTrenPage === 0) {
+                    soluongpageshh = result.data / userTrenPage;
+                } else {
+                    soluongpageshh = Math.floor(result.data / userTrenPage + 1);
+                }
+                if (path > soluongpageshh) {
+                    history('/notFound');
+                }
+                if (soluongpageshh < 7) {
+                    setN(soluongpageshh);
+                    var xxxxxxxx = [];
+                    for (let i = 0; i < soluongpageshh; i++) {
+                        xxxxxxxx[i] = a[i];
+                    }
+                    setA(xxxxxxxx);
+                }
+                setN(soluongpageshh);
+                callData();
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+    }, []);
+
     return (
         <>
             <div className="AdminUsers">
@@ -31,8 +94,8 @@ function AdminUsers() {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>UserName</th>
                             <th>Name</th>
+                            <th>UserName</th>
                             <th>Email</th>
                             <th>Famous</th>
                             <th>Quyền</th>
@@ -41,148 +104,84 @@ function AdminUsers() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>khoa</td>
-                            <td>john@example.com</td>
-                            <td>
-                                true{' '}
-                                <button className="AdminUsers_table-BlueTick">
-                                    <MdAutoFixNormal />
-                                </button>
-                            </td>
-                            <td>
-                                admin{' '}
-                                <button className="AdminUsers_table-BlueTick">
-                                    <MdAutoFixNormal />
-                                </button>
-                            </td>
-                            <td>khoa vip</td>
-                            <td>
-                                <button className="AdminUsers_table-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>khoa</td>
-                            <td>john@example.com</td>
-                            <td>
-                                false{' '}
-                                <button className="AdminUsers_table-BlueTick">
-                                    <MdAutoFixNormal />
-                                </button>
-                            </td>
-                            <td>
-                                user{' '}
-                                <button className="AdminUsers_table-BlueTick">
-                                    <MdAutoFixNormal />
-                                </button>
-                            </td>
-                            <td>khoa vip</td>
-                            <td>
-                                <button className="AdminUsers_table-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>khoa</td>
-                            <td>john@example.com</td>
-                            <td>true</td>
-                            <td>admin</td>
-                            <td>khoa vip</td>
-                            <td>
-                                <button className="AdminUsers_table-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>khoa</td>
-                            <td>john@example.com</td>
-                            <td>true</td>
-                            <td>admin</td>
-                            <td>khoa vip</td>
-                            <td>
-                                <button className="AdminUsers_table-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>khoa</td>
-                            <td>john@example.com</td>
-                            <td>true</td>
-                            <td>admin</td>
-                            <td>khoa vip</td>
-                            <td>
-                                <button className="AdminUsers_table-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>khoa</td>
-                            <td>john@example.com</td>
-                            <td>true</td>
-                            <td>admin</td>
-                            <td>khoa vip</td>
-                            <td>
-                                <button className="AdminUsers_table-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>khoa</td>
-                            <td>john@example.com</td>
-                            <td>true</td>
-                            <td>admin</td>
-                            <td>khoa vip</td>
-                            <td>
-                                <button className="AdminUsers_table-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>khoa</td>
-                            <td>john@example.com</td>
-                            <td>true</td>
-                            <td>admin</td>
-                            <td>khoa vip</td>
-                            <td>
-                                <button className="AdminUsers_table-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>khoa</td>
-                            <td>john@example.com</td>
-                            <td>true</td>
-                            <td>admin</td>
-                            <td>khoa vip</td>
-                            <td>
-                                <button className="AdminUsers_table-button">Delete</button>
-                            </td>
-                        </tr>
+                        {Array.isArray(data) &&
+                            data.map((number) => (
+                                <tr key={number.id}>
+                                    <td>{number.id}</td>
+                                    <td>{number.name}</td>
+                                    <td>{number.userName}</td>
+                                    <td>{number.gmail}</td>
+                                    <td>
+                                        {number.famous ? 'True' : 'False'}{' '}
+                                        <button className="AdminUsers_table-BlueTick">
+                                            <MdAutoFixNormal />
+                                        </button>
+                                    </td>
+                                    <td>
+                                        {number.role}{' '}
+                                        <button className="AdminUsers_table-BlueTick">
+                                            <MdAutoFixNormal />
+                                        </button>
+                                    </td>
+                                    <td>{convertBio(number.bio)}</td>
+                                    <td>
+                                        {number.role !== 'ADMIN' && (
+                                            <button className="AdminUsers_table-button">Delete</button>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
                     </tbody>
                 </table>
                 <div className="AdminUsers_paginate">
-                    <MdOutlineKeyboardDoubleArrowLeft className="AdminUsers_paginate-fixed" />
-                    <MdOutlineKeyboardArrowLeft className="AdminUsers_paginate-fixed" />
-                    <button className="AdminUsers_paginate-icon">{a[0]}</button>
-                    <button className="AdminUsers_paginate-icon">{a[1]}</button>
-                    <button className="AdminUsers_paginate-icon">{a[2]}</button>
-                    <button className="AdminUsers_paginate-icon">{a[3]}</button>
-                    <button className="AdminUsers_paginate-icon">{a[4]}</button>
-                    <button className="AdminUsers_paginate-icon">{a[5]}</button>
-                    <button className="AdminUsers_paginate-icon">{a[6]}</button>
-                    <MdOutlineKeyboardArrowRight className="AdminUsers_paginate-fixed" />
-                    <MdOutlineKeyboardDoubleArrowRight className="AdminUsers_paginate-fixed" />
+                    {path != 1 && (
+                        <>
+                            <MdOutlineKeyboardDoubleArrowLeft
+                                className="AdminUsers_paginate-fixed"
+                                onClick={() => {
+                                    window.location.href = '/admin/users/' + 1;
+                                }}
+                            />
+                            <MdOutlineKeyboardArrowLeft
+                                className="AdminUsers_paginate-fixed"
+                                onClick={() => {
+                                    const xiu = parseInt(path, 10) - 1;
+                                    window.location.href = '/admin/users/' + xiu;
+                                }}
+                            />
+                        </>
+                    )}
+                    {a.map((number) => (
+                        <button
+                            className={'AdminUsers_paginate-icon'}
+                            key={number}
+                            style={{
+                                backgroundColor: number == path ? 'rgba(0, 0, 0, 0.05)' : 'white',
+                            }}
+                            onClick={() => {
+                                window.location.href = '/admin/users/' + number;
+                            }}
+                        >
+                            {number}
+                        </button>
+                    ))}
+                    {path != n && (
+                        <>
+                            <MdOutlineKeyboardArrowRight
+                                className="AdminUsers_paginate-fixed"
+                                onClick={() => {
+                                    const xiu = parseInt(path, 10) + 1;
+                                    window.location.href = '/admin/users/' + xiu;
+                                }}
+                            />
+                            <MdOutlineKeyboardDoubleArrowRight
+                                className="AdminUsers_paginate-fixed"
+                                onClick={() => {
+                                    window.location.href = '/admin/users/' + n;
+                                }}
+                            />
+                        </>
+                    )}
                 </div>
             </div>
         </>
