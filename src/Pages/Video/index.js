@@ -3,7 +3,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { HiSpeakerWave, HiSpeakerXMark } from 'react-icons/hi2';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { FaShare, FaHeart } from 'react-icons/fa';
 
@@ -31,7 +31,10 @@ import {
     createCmt,
     autoLogin,
     deleteCmt,
+    selectImgPostAll,
 } from '../../utils/CallApiOverView';
+
+const maxPage = 20;
 function Video() {
     const [showLogin, setShowLogin] = useState(false);
     const [haveSound, setHaveSound] = useState(true);
@@ -43,7 +46,29 @@ function Video() {
     const [showHeart, setShowHeart] = useState(false);
     const [xHeart, setXHeart] = useState('0px');
     const [yHeart, setYHeart] = useState('0px');
+
+    const [day, setDay] = useState([]);
+    const [thu, setThu] = useState(-1);
+    const [luuLai, setLuuLai] = useState({});
     const history = useNavigate();
+
+    const lastPath = document.referrer;
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await selectImgPostAll(
+                    maxPage,
+                    localStorage.getItem('user') != null ? JSON.parse(localStorage.getItem('user')).id : 0,
+                );
+                setDay(result);
+                console.log(lastPath);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+    }, []);
     useEffect(() => {
         const aicall = async ({ username, password }) => {
             try {
@@ -190,6 +215,7 @@ function Video() {
                         }
                         if (sult.status !== 200) window.location.href = '/NotFound';
                         setBaiViet(sult.data);
+                        setLuuLai(sult.data);
                         setCmts(result.data);
                     } else {
                         window.location.href = '/NotFound';
@@ -273,6 +299,51 @@ function Video() {
             event.preventDefault();
         }
     };
+
+    const cmtcmt = async () => {
+        const sult = await searchAllCmtsByVideoId(
+            day[thu].video.id,
+            localStorage.getItem('user') !== null ? JSON.parse(localStorage.getItem('user')).id : 0,
+        );
+        setCmts(sult.data);
+    };
+    const cmtc = async () => {
+        const sult = await searchAllCmtsByVideoId(
+            luuLai.video.id,
+            localStorage.getItem('user') !== null ? JSON.parse(localStorage.getItem('user')).id : 0,
+        );
+        setCmts(sult.data);
+    };
+    const baiDuoi = () => {
+        if (thu < maxPage - 1 && Array.isArray(day) && day.length > thu) {
+            const abc = thu + 1;
+            setThu(abc);
+        }
+    };
+
+    const baiTren = () => {
+        if (thu > 0 && Array.isArray(day) && day.length > thu) {
+            const abc = thu - 1;
+            setThu(abc);
+        }
+        if (thu === 0) {
+            setBaiViet(luuLai);
+            cmtc();
+            history('/' + luuLai.user.userName + '/video/' + luuLai.video.id);
+            const abc = thu - 1;
+            setThu(abc);
+        }
+    };
+
+    useEffect(() => {
+        if (Array.isArray(day) && day.length > thu && thu >= 0) {
+            cmtcmt();
+            setBaiViet(day[thu]);
+            const leminho = '/' + day[thu].user.userName + '/video/' + day[thu].video.id;
+            history(leminho);
+        }
+    }, [thu, day]);
+
     return (
         <>
             {showLogin && (
@@ -300,7 +371,7 @@ function Video() {
                     <div
                         className="Video_left-icon Video_left-icon-close"
                         onClick={() => {
-                            history(-1);
+                            history('/');
                         }}
                     >
                         <AiOutlineClose style={{ fontSize: '24px' }} />
@@ -309,12 +380,26 @@ function Video() {
                         <HiDotsHorizontal style={{ fontSize: '24px' }} />
                     </div>
                     <div className="Video_left-topRight">
-                        <div className="Video_left-icon Video_left-icon-to">
-                            <IoIosArrowUp style={{ fontSize: '24px' }} />
-                        </div>
-                        <div className="Video_left-icon Video_left-icon-to">
-                            <IoIosArrowDown style={{ fontSize: '24px' }} />
-                        </div>
+                        {thu > -1 && (
+                            <div
+                                className="Video_left-icon Video_left-icon-to"
+                                onClick={() => {
+                                    baiTren();
+                                }}
+                            >
+                                <IoIosArrowUp style={{ fontSize: '24px' }} />
+                            </div>
+                        )}
+                        {thu < maxPage - 1 && (
+                            <div
+                                className="Video_left-icon Video_left-icon-to"
+                                onClick={() => {
+                                    baiDuoi();
+                                }}
+                            >
+                                <IoIosArrowDown style={{ fontSize: '24px' }} />
+                            </div>
+                        )}
                     </div>
                     <div
                         className="Video_left-icon  Video_left-icon-speaker"

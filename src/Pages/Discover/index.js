@@ -22,7 +22,6 @@ function Discover() {
         const fetchData = async () => {
             try {
                 const result = await selectImgPostAll(16, userId);
-                console.log(result);
                 setData(result);
             } catch (error) {
                 console.error(error);
@@ -36,7 +35,7 @@ function Discover() {
             <div className="Discover">
                 <div className="Discover_content">
                     {data.map((number) => (
-                        <Link to={'/' + number.user.userName + '/video/' + number.video.id}>
+                        <Link key={number.video.id} to={'/' + number.user.userName + '/video/' + number.video.id}>
                             <div className="Discover_Content-child">
                                 <img src={number.video.link} alt="sai" className="Discover_Content-child_img" />
                                 <p>{number.video.mota}</p>

@@ -4,7 +4,7 @@ import { BsFillChatDotsFill } from 'react-icons/bs';
 import { AiFillHeart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { BsCheckCircleFill } from 'react-icons/bs';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import {
     selectImgPostAll,
     test,
@@ -21,22 +21,13 @@ function Home() {
     const [userId, setUserId] = useState(
         localStorage.getItem('user') != null ? JSON.parse(localStorage.getItem('user')).id : 0,
     );
-
+    const [size, setSize] = useState(10);
     const [showLogin, setShowLogin] = useState(false);
-
-    useEffect(() => {
-        if (localStorage.getItem('user') != null) {
-            const milu = JSON.parse(localStorage.getItem('user'));
-            setUserId(milu.id);
-        } else {
-            setUserId(0);
-        }
-    });
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await selectImgPostAll(20, userId);
+                const result = await selectImgPostAll(size, userId);
                 setData(result);
             } catch (error) {
                 console.error(error);
@@ -147,6 +138,55 @@ function Home() {
             });
         console.log(xxx);
     };
+    //xxx
+    const [reachedEnd, setReachedEnd] = useState(false);
+
+    // Các state và hàm setState của bạn
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await selectImgPostAll(size, userId);
+                setData(result);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchData();
+    }, [size, userId]);
+
+    const yourLoadMoreFunction = async () => {
+        try {
+            const result = await selectImgPostAll(size + 10, userId);
+            if (result.length > size) {
+                setData((prevData) => [...prevData, ...result]);
+                setSize((prevSize) => prevSize + 10);
+                console.log(size);
+            } else {
+                setReachedEnd(true); // Đã đến cuối dữ liệu
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const observer = useRef();
+
+    const lastElementRef = useCallback(
+        (node) => {
+            if (observer.current) observer.current.disconnect();
+            observer.current = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !reachedEnd) {
+                    yourLoadMoreFunction();
+                }
+            });
+
+            if (node) observer.current.observe(node);
+        },
+        [reachedEnd, yourLoadMoreFunction],
+    );
+
     return (
         <>
             {showLogin && (
@@ -161,8 +201,8 @@ function Home() {
             )}
             <LoginForm showLoginForm={showLogin} />
             <div className="Home">
-                {data.map((number) => (
-                    <div key={number.video.id}>
+                {data.map((number, index) => (
+                    <div key={index} ref={index === data.length - 1 ? lastElementRef : null}>
                         <>
                             <div className="HomeE">
                                 <Link to={'/' + number.user.userName}>
