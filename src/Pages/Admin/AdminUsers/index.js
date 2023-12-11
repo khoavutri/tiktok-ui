@@ -10,8 +10,15 @@ import {
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-import { countAllUsers, autoLogin, searchPageAllAtAdmin } from '../../../utils/CallApiOverView';
-const userTrenPage = 1;
+import {
+    countAllUsers,
+    autoLogin,
+    searchPageAllAtAdmin,
+    banPhuoc,
+    dongDam,
+    deleteUserAtAdmin,
+} from '../../../utils/CallApiOverView';
+const userTrenPage = 9;
 function AdminUsers() {
     const [searchValue, setSearchValue] = useState('');
     const [a, setA] = useState([1, 2, 3, 4, 5, 6, 7]);
@@ -21,7 +28,7 @@ function AdminUsers() {
     const path = window.location.pathname.slice(13);
     const callData = async () => {
         const x = await searchPageAllAtAdmin(searchValue, path, userTrenPage, sessionStorage.getItem('jwt'));
-        setSearchValue('');
+        // setSearchValue('');
         setData(x.data);
     };
 
@@ -66,6 +73,32 @@ function AdminUsers() {
                     }
                     setA(xxxxxxxx);
                 }
+                if (path >= 7) {
+                    if (path == soluongpageshh) {
+                        var soNguyen = parseInt(path, 10);
+                        setA([
+                            soNguyen - 6,
+                            soNguyen - 5,
+                            soNguyen - 4,
+                            soNguyen - 3,
+                            soNguyen - 2,
+                            soNguyen - 1,
+                            soNguyen,
+                        ]);
+                    }
+                    if (path < soluongpageshh) {
+                        var soNguyen = parseInt(path, 10);
+                        setA([
+                            soNguyen - 5,
+                            soNguyen - 4,
+                            soNguyen - 3,
+                            soNguyen - 2,
+                            soNguyen - 1,
+                            soNguyen,
+                            soNguyen + 1,
+                        ]);
+                    }
+                }
                 setN(soluongpageshh);
                 callData();
             } catch (error) {
@@ -74,7 +107,60 @@ function AdminUsers() {
         };
         fetchData();
     }, []);
-
+    const choKeoHayBiGheo = async (number) => {
+        try {
+            var codeeee;
+            if (sessionStorage.getItem('jwt') !== null) {
+                codeeee = sessionStorage.getItem('jwt');
+            } else {
+                codeeee = await autoLogin({
+                    username: JSON.parse(localStorage.getItem('user')).userName,
+                    password: JSON.parse(localStorage.getItem('user')).passWord,
+                });
+            }
+            const mul = await banPhuoc(number, codeeee);
+            console.log(mul.data);
+            callData();
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    };
+    const xaLuoi = async (number) => {
+        try {
+            var codeeee;
+            if (sessionStorage.getItem('jwt') !== null) {
+                codeeee = sessionStorage.getItem('jwt');
+            } else {
+                codeeee = await autoLogin({
+                    username: JSON.parse(localStorage.getItem('user')).userName,
+                    password: JSON.parse(localStorage.getItem('user')).passWord,
+                });
+            }
+            const mul = await dongDam(number, codeeee);
+            console.log(mul.data);
+            callData();
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    };
+    const raDimaimai = async (number) => {
+        try {
+            var codeeee;
+            if (sessionStorage.getItem('jwt') !== null) {
+                codeeee = sessionStorage.getItem('jwt');
+            } else {
+                codeeee = await autoLogin({
+                    username: JSON.parse(localStorage.getItem('user')).userName,
+                    password: JSON.parse(localStorage.getItem('user')).passWord,
+                });
+            }
+            const mul = await deleteUserAtAdmin(number, codeeee);
+            console.log(mul.data);
+            callData();
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    };
     return (
         <>
             <div className="AdminUsers">
@@ -86,8 +172,20 @@ function AdminUsers() {
                             placeholder="Nhập ID, Tên hoặc UserName"
                             value={searchValue}
                             onChange={(e) => setSearchValue(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    history('/admin/users/' + 1);
+                                    callData();
+                                }
+                            }}
                         />
-                        <FaSearch style={{ marginLeft: '10px', fontSize: '20px' }} />
+                        <FaSearch
+                            style={{ marginLeft: '10px', fontSize: '20px' }}
+                            onClick={() => {
+                                history('/admin/users/' + 1);
+                                callData();
+                            }}
+                        />
                     </div>
                 </div>
                 <table className="AdminUsers_table">
@@ -108,25 +206,44 @@ function AdminUsers() {
                             data.map((number) => (
                                 <tr key={number.id}>
                                     <td>{number.id}</td>
-                                    <td>{number.name}</td>
+                                    <td>
+                                        <Link to={'/' + number.userName}>{number.name}</Link>
+                                    </td>
                                     <td>{number.userName}</td>
                                     <td>{number.gmail}</td>
                                     <td>
                                         {number.famous ? 'True' : 'False'}{' '}
                                         <button className="AdminUsers_table-BlueTick">
-                                            <MdAutoFixNormal />
+                                            <MdAutoFixNormal
+                                                onClick={() => {
+                                                    choKeoHayBiGheo(number.id);
+                                                }}
+                                            />
                                         </button>
                                     </td>
                                     <td>
                                         {number.role}{' '}
-                                        <button className="AdminUsers_table-BlueTick">
-                                            <MdAutoFixNormal />
-                                        </button>
+                                        {number.id != JSON.parse(localStorage.getItem('user')).id && (
+                                            <button className="AdminUsers_table-BlueTick">
+                                                <MdAutoFixNormal
+                                                    onClick={() => {
+                                                        xaLuoi(number.id);
+                                                    }}
+                                                />
+                                            </button>
+                                        )}
                                     </td>
                                     <td>{convertBio(number.bio)}</td>
                                     <td>
                                         {number.role !== 'ADMIN' && (
-                                            <button className="AdminUsers_table-button">Delete</button>
+                                            <button
+                                                className="AdminUsers_table-button"
+                                                onClick={() => {
+                                                    raDimaimai(number.id);
+                                                }}
+                                            >
+                                                Delete
+                                            </button>
                                         )}
                                     </td>
                                 </tr>

@@ -362,6 +362,89 @@ const searchPageAllAtAdmin = async (key, currentPage, size, bearToken) => {
         throw error;
     }
 };
+const banPhuoc = async (id, bearToken) => {
+    try {
+        const data = await request.put('admin/Ban-Phuoc', null, {
+            params: {
+                id: id,
+            },
+            headers: {
+                Authorization: `Bearer ${bearToken}`,
+            },
+        });
+        return data;
+    } catch (error) {
+        console.error('An error occurred in banPhuoc:', error);
+        throw error;
+    }
+};
+const dongDam = async (id, bearToken) => {
+    try {
+        const data = await request.put('admin/Dong-Dam', null, {
+            params: {
+                id: id,
+            },
+            headers: {
+                Authorization: `Bearer ${bearToken}`,
+            },
+        });
+        return data;
+    } catch (error) {
+        console.error('An error occurred in banPhuoc:', error);
+        throw error;
+    }
+};
+const deleteUserAtAdmin = async (id, bearToken) => {
+    const data = await request.delete('admin/xoa-user', {
+        params: {
+            id: id,
+        },
+        headers: {
+            Authorization: `Bearer ${bearToken}`,
+        },
+    });
+    return data;
+};
+const adminSelectImgPostAll = async (page, size, bearToken) => {
+    const data = await request.get('admin/SelectImgPostAll', {
+        params: { page: page, size: size },
+        headers: {
+            Authorization: `Bearer ${bearToken}`,
+        },
+    });
+    return data.data;
+};
+const adminSearchAllCmts = async (page, size, bearToken) => {
+    const data = await request.get('admin/SearchAllCmts', {
+        params: { page: page, size: size },
+        headers: {
+            Authorization: `Bearer ${bearToken}`,
+        },
+    });
+    return data.data;
+};
+const deleteBaiVietAtAdmin = async (id, bearToken) => {
+    const data = await request.delete('admin/xoa-BaiViet', {
+        params: {
+            id: id,
+        },
+        headers: {
+            Authorization: `Bearer ${bearToken}`,
+        },
+    });
+    return data;
+};
+const deleteCmtAtAdmin = async (id, bearToken) => {
+    const data = await request.delete('admin/xoa-Cmts', {
+        params: {
+            id: id,
+        },
+        headers: {
+            Authorization: `Bearer ${bearToken}`,
+        },
+    });
+    return data;
+};
 export {
     sellectUserById,
     autoLogin,
@@ -392,5 +475,12 @@ export {
     countAllLikes,
     countAllCmts,
     searchPageAllAtAdmin,
+    banPhuoc,
+    dongDam,
+    deleteUserAtAdmin,
+    adminSelectImgPostAll,
+    adminSearchAllCmts,
+    deleteBaiVietAtAdmin,
+    deleteCmtAtAdmin,
     test,
 };
