@@ -4,7 +4,7 @@ import { HiDotsHorizontal } from 'react-icons/hi';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { HiSpeakerWave, HiSpeakerXMark } from 'react-icons/hi2';
 import { Link, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaShare, FaHeart } from 'react-icons/fa';
 
 import {
@@ -52,7 +52,15 @@ function Video() {
     const [luuLai, setLuuLai] = useState({});
     const history = useNavigate();
 
-    const lastPath = document.referrer;
+    const handleScroll = (event) => {
+        if (event.deltaY > 0) {
+            baiDuoi();
+        } else {
+            baiTren();
+        }
+    };
+
+    const referrer = document.referrer;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -62,7 +70,6 @@ function Video() {
                     localStorage.getItem('user') != null ? JSON.parse(localStorage.getItem('user')).id : 0,
                 );
                 setDay(result);
-                console.log(lastPath);
             } catch (error) {
                 console.error(error);
             }
@@ -364,6 +371,7 @@ function Video() {
                         backgroundImage: baiViet && baiViet.video ? `url(${baiViet.video.link})` : 'none',
                     }}
                     onDoubleClick={handleDoubleClick}
+                    onWheel={handleScroll}
                 >
                     {showHeart && (
                         <FaHeart style={{ color: 'fe2c55', top: yHeart, left: xHeart }} className="DoubleClickToLike" />
