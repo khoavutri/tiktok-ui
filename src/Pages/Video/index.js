@@ -626,7 +626,7 @@ function Video() {
                         </div>
                     </div>
                     <div className="Video_right-copyLink">
-                        <p className="Video_right-copyLink--p">{'http://localhost:3000/' + path}</p>
+                        <p className="Video_right-copyLink--p">{'http://vutrikhoa.click/' + path}</p>
                         <button className="Video_right-copyLink--button" onClick={() => handleClickCopy()}>
                             Sao Chép
                         </button>
