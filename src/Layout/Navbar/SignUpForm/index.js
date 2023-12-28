@@ -86,7 +86,7 @@ function SignUpForm() {
                     <div className="phu"></div>
                     <div className="login-form">
                         <h2>Đăng Ký</h2>
-                        <div className="chotoi">
+                        <div className="chotoi" style={{ overflow: 'hidden' }}>
                             <p style={{ color: 'black', fontWeight: 'bold' }}>Tên Đăng Nhập</p>
                             <input
                                 type="text"

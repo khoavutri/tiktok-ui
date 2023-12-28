@@ -235,7 +235,7 @@ function Video() {
         fetchData();
     }, []);
     function handleClickCopy() {
-        const textToCopy = 'http://localhost:3000/' + path;
+        const textToCopy = 'http://vutrikhoa.click/' + path;
 
         navigator.clipboard
             .writeText(textToCopy)

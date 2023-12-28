@@ -93,7 +93,7 @@ function LoginForm({ showLoginForm }) {
                                 <div className="phu"></div>
                                 <div className="login-form" style={{ marginBottom: '100px' }}>
                                     <h2>Đăng Nhập</h2>
-                                    <div className="chotoi">
+                                    <div className="chotoi" style={{ overflow: 'hidden' }}>
                                         <p style={{ color: 'black', fontWeight: 'bold' }}>Tên Đăng Nhập</p>
                                         <input
                                             type="text"
