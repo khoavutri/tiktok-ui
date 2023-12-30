@@ -235,7 +235,7 @@ function Video() {
         fetchData();
     }, []);
     function handleClickCopy() {
-        const textToCopy = 'http://vutrikhoa.click/' + path;
+        const textToCopy = 'http://13.211.164.208/' + path;
 
         navigator.clipboard
             .writeText(textToCopy)
@@ -626,7 +626,7 @@ function Video() {
                         </div>
                     </div>
                     <div className="Video_right-copyLink">
-                        <p className="Video_right-copyLink--p">{'http://vutrikhoa.click/' + path}</p>
+                        <p className="Video_right-copyLink--p">{'http://13.211.164.208/' + path}</p>
                         <button className="Video_right-copyLink--button" onClick={() => handleClickCopy()}>
                             Sao Chép
                         </button>
