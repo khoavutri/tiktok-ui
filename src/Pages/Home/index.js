@@ -5,6 +5,7 @@ import { AiFillHeart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { useEffect, useState, useRef, useCallback } from 'react';
+
 import {
     selectImgPostAll,
     test,
@@ -14,8 +15,11 @@ import {
     likeVideoApi,
     unLikeVideoApi,
 } from '../../utils/CallApiOverView';
+import LoadingPage from '../../component/base/LoadingPage';
 import LoginForm from '../../Layout/Navbar/LoginForm';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import { useSelector,useDispatch } from 'react-redux';
+import { setShowPage } from '../../reducers/slices/loadingBarSlice';
 function Home() {
     const [data, setData] = useState([]);
     const [userId, setUserId] = useState(
@@ -23,13 +27,18 @@ function Home() {
     );
     const [size, setSize] = useState(10);
     const [showLogin, setShowLogin] = useState(false);
-
+    const showLoading = useSelector((s) => s.loadingBar.showPage);
+    
+    const dispatch = useDispatch()
     useEffect(() => {
         const fetchData = async () => {
+            dispatch(setShowPage(true))
             try {
                 const result = await selectImgPostAll(size, userId);
                 setData(result);
+                dispatch(setShowPage(false))
             } catch (error) {
+                dispatch(setShowPage(false))
                 console.error(error);
             }
         };
@@ -141,7 +150,7 @@ function Home() {
     //xxx
     const [reachedEnd, setReachedEnd] = useState(false);
 
-    // Các state và hàm setState của bạn
+    // xx
 
     useEffect(() => {
         const fetchData = async () => {
@@ -164,7 +173,7 @@ function Home() {
                 setSize((prevSize) => prevSize + 10);
                 console.log(size);
             } else {
-                setReachedEnd(true); // Đã đến cuối dữ liệu
+                setReachedEnd(true);
             }
         } catch (error) {
             console.error(error);
@@ -189,6 +198,7 @@ function Home() {
 
     return (
         <>
+            <LoadingPage />
             {showLogin && (
                 <img
                     src="https://icons.iconarchive.com/icons/icons8/ios7/32/User-Interface-Delete-Sign-icon.png"
@@ -200,7 +210,7 @@ function Home() {
                 ></img>
             )}
             <LoginForm showLoginForm={showLogin} />
-            <div className="Home">
+            <div className="Home" style={{ display: showLoading ? 'none' : '' }}>
                 {data.map((number, index) => (
                     <div key={index} ref={index === data.length - 1 ? lastElementRef : null}>
                         <>

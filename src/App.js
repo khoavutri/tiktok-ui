@@ -10,6 +10,8 @@ import Video from './Pages/Video';
 import NotFound from './Pages/NotFound';
 import Search from './Pages/Search';
 import Admin from './Pages/Admin';
+import TestCam from './Pages/test-cam/testCam';
+
 function App() {
     return (
         <Router>
@@ -17,6 +19,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<DefaultLayout Children={<Home />} />} />
                     <Route path="/admin" element={<Admin />} />
+                    <Route path="/cam" element={ <TestCam/>} />
                     <Route path="/admin/users/:page" element={<Admin />} />
                     <Route path="/admin/baiviets/:page" element={<Admin />} />
                     <Route path="/admin/cmts/:page" element={<Admin />} />

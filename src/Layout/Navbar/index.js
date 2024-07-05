@@ -6,8 +6,8 @@ import LoginForm from './LoginForm';
 import request from '../../utils/request';
 import { autoLogin } from '../../utils/CallApiOverView';
 import { RiAdminLine } from 'react-icons/ri';
-
 import SearchForm from './SearchForm';
+import { useTranslation } from 'react-i18next';
 const MENUBAR_1 = [
     {
         icon: 'https://icons.iconarchive.com/icons/simpleicons-team/simple/24/google-translate-icon.png',
@@ -56,7 +56,7 @@ const MENUBAR_1 = [
 ];
 function Navbar() {
     const [ShowLoginForm, setShowLoginForm] = useState(false);
-
+    const { t } = useTranslation();
     const Avatar = ({ link }) => {
         return (
             <>
@@ -132,7 +132,7 @@ function Navbar() {
                                     height="16"
                                     style={{ marginLeft: '20px', marginRight: '20px' }}
                                 ></img>
-                                <p className="navBarMenuAvatarIconConP">Ngôn ngữ</p>
+                                <p className="navBarMenuAvatarIconConP">{t('handleLanguage')}</p>
                             </div>
                             <div className="navBarMenuAvatarIconCon">
                                 <img
